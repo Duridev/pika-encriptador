@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <!-- CSS  -->
+<link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+
+        <section class="left-area">
+            <h1>Pika-Encriptador</h1>
+
+            <textarea name="textArea" id="textArea" placeholder="Ingrese el texto aquí" cols="35" rows="7"></textarea>
+
+            <div>
+                <div class="advertencia">
+                    <svg viewBox="0 0 64 64" width="64" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="m4 32c0-15.463973 12.536027-28 28-28s28 12.536027 28 28z" fill="#e43535"/><path d="m4 60c0-15.463973 12.536027-28 28-28s28 12.536027 28 28z" fill="#ececec" transform="matrix(1 0 0 -1 0 92)"/><g stroke="#595959"><path d="m5 32h54" stroke-linecap="square" stroke-width="2"/><circle cx="32" cy="32" fill="#fff" r="8" stroke-linecap="round" stroke-width="4"/></g></g></svg>
+                    <p> Solo letras minúsculas y sin tildes</p>
+                </div>
+
+                <div class="buttons">
+                    <button id="buttonEncriptar" onclick="Encriptar()">Encriptar</button>
+                    <button id="buttonDesencriptar" onclick="Desencriptar()">Desencriptar</button>
+                </div>
+
+            </div>
+
+        </section>
+
+        <div class="right-area">
+            <img class="picachu-con-lupa" src="./assets/img/PICACHU-lupa.png" alt="pikachu con lupa">
+            <h2>Ningún mensaje fue encontrado</h2>
+            <p>Ingresa el texto que deseas encriptar o Desencriptar</p>
+        </div>
+
+    </div>
+    
+
+    <script src="./assets/js/app.js"></script>
+</body>
+</html>
