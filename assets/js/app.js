@@ -1,12 +1,15 @@
 
-//let oracion = "Hola, esto es una oración";
-//let arrayPalabras = oracion.split(/\s+/);
 
-//console.log(arrayPalabras);
+const helados = ["chocolate", "vainilla", "fresa", "menta"];
+
+const consonantes = ["n", "s", "r", "l", "d", "t", "c", "m", "p", "b"];
+const vocales = ["a", "e", "i", "o", "u", "a", "e", "i", "o", "u"];
+
+
 
 
 function Encriptar() {
-    separarLetrasArray(separarPalabrasArray(valorTextArea()));
+    adicionarLetrasArray(separarLetrasInvertidasArray(separarPalabrasArray(valorTextArea())));
 
 }
 
@@ -22,14 +25,30 @@ function separarPalabrasArray(texto) {
     return arrayPalabras;
 }
 
-function separarLetrasArray(arr) {
+function separarLetrasInvertidasArray(arr) {
 
-    const arrayLetrasSeparadas = []
+    const arrayLetrasSeparadasInvertidas = []
     for(let i = 0; i < arr.length; i++){
-        arrayLetrasSeparadas.push(arr[i].split(''))
+        arrayLetrasSeparadasInvertidas.push(arr[i].split('').reverse())
     }
-    console.log(arrayLetrasSeparadas);
-    return arrayLetrasSeparadas
+    console.log(arrayLetrasSeparadasInvertidas);
+    return arrayLetrasSeparadasInvertidas
 }
 
-//const helados = ["chocolate", "vainilla", "fresa", "menta"];
+function adicionarLetrasArray(arr) {             
+    const arrayConLetrasAdicionadas = []
+
+    for(let i = 0; i < arr.length; i++){
+        const palabrasConLetrasAdicionadas = []
+
+        for(let j = 0; j < arr[i].length; j++) {
+            consRamdom = consonantes[Math.floor(Math.random() * consonantes.length)]
+            vocRamdom = vocales[Math.floor(Math.random() * vocales.length)]
+            palabrasConLetrasAdicionadas.push(consRamdom + vocRamdom + arr[i][j])
+        }
+        arrayConLetrasAdicionadas.push(palabrasConLetrasAdicionadas)
+    }
+    console.log(arrayConLetrasAdicionadas);
+    return arrayConLetrasAdicionadas;
+}
+
