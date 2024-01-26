@@ -85,7 +85,7 @@ p {
 
 button {
     font-family: 'pokemon';
-    font-size: 2rem;
+    font-size: 1.7rem;
     color: #FFCB05;
     font-weight:bolder;
     -webkit-text-stroke: 1px #3466af;
@@ -130,7 +130,7 @@ button:active {
 }
 
 
-#textArea {
+#text-area {
     border-radius: 20px;
     background-color: rgba(250, 250, 250, 0.7);
     padding: 2rem;
@@ -166,4 +166,13 @@ svg {
 
 .picachu-con-lupa {
     max-width: 150px
+}
+
+
+/* FOOTER */ 
+
+footer p {
+    text-align: center;
+    margin: 0;
+
 }
