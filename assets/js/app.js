@@ -1,17 +1,39 @@
-
-
-const helados = ["chocolate", "vainilla", "fresa", "menta"];
-
 const consonantes = ["n", "s", "r", "l", "d", "t", "c", "m", "p", "b"];
 const vocales = ["a", "e", "i", "o", "u", "a", "e", "i", "o", "u"];
 
 
-
-
-function Encriptar() {
+// FUNCION PARA ENCRIPTAR
+/*function Encriptar() {
     arrayATextoEncriptado(juntarLetrasPalabrasArray(adicionarLetrasArray(separarLetrasInvertidasArray(separarPalabrasArray(valorTextArea())))));
 
+}*/
+function Encriptar() {
+    // Paso 1: Obtener el texto del área de texto
+    const texto = valorTextArea();
+
+    // Paso 2: Separar las palabras del texto en un array
+    const palabrasSeparadas = separarPalabrasArray(texto);
+
+    // Paso 3: Invertir las letras de cada palabra
+    const palabrasInvertidas = separarLetrasInvertidasArray(palabrasSeparadas);
+
+    // Paso 4: Añadir letras aleatorias a cada palabra
+    const palabrasConLetrasAdicionadas = adicionarLetrasArray(palabrasInvertidas);
+
+    // Paso 5: Juntar las letras de cada palabra y añadir prefijo "pika"
+    const palabrasEncriptadas = juntarLetrasPalabrasArray(palabrasConLetrasAdicionadas);
+
+
+    // Paso 6: Convertir el array de palabras encriptadas a texto encriptado
+    const TextoEncriptadoListo = arrayATextoEncriptado(palabrasEncriptadas);
+
+    // Paso 7: limpar el HTML y mostrar texto encriptado
+    mostrarTextEncriptado(TextoEncriptadoListo);
+
 }
+
+
+// FUNCIONES PARA ENCRIPTAR EL TEXTO ****************************************
 
 function valorTextArea() {
     const textArea = document.querySelector('#text-area').value;
@@ -82,4 +104,20 @@ function arrayATextoEncriptado(arr) {
     }
         console.log(textoEncriptado);
         return textoEncriptado;
+}
+
+function limpiarLadoDerecho() {
+    const ladoDerecho = document.querySelector('.right-area');
+
+    ladoDerecho.innerHTML= "";
+}
+
+function mostrarTextEncriptado(text) {
+    const ventanaTexto = document.querySelector('.right-area');
+    limpiarLadoDerecho();
+    const parrafo = document.createElement('P');
+    parrafo.textContent = text;
+    parrafo.classList.add('.mostrar-texto-encriptado')
+
+
 }
