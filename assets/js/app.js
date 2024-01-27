@@ -34,6 +34,9 @@ function Encriptar() {
     // Limpiar area de texto luego de encriptar
     limpiarTextArea()
 
+    // Creación boton copiar texto encriptado
+    botonCopiarTexto()
+
 }
 
 
@@ -155,4 +158,27 @@ function limpiarTextArea() {
     textArea.value = '';
 }
 
-function
+function botonCopiarTexto() {
+
+    const parrafo = document.querySelector('.parrafo-texto');
+    const divBottom = document.querySelector('.div-bottom');
+    const botonCopiar = document.createElement('button');
+
+    if (parrafo != '') {
+        divBottom.appendChild(botonCopiar)
+        botonCopiar.classList.add('boton-copiar')
+        botonCopiar.innerHTML='Pika-Copiar';
+    }
+}
+
+function copiarTexto() {
+    const botonCopiar = document.querySelector(".boton-copiar");
+    const parrafo = document.querySelector('.parrafo-texto');
+    botonCopiar.addEventListener("click", function () {
+        navigator.clipboard.writeText(parrafo.innerText).then(() => {
+            alert('¡El texto ha sido copiado!');
+            }, err => {
+                console.error('Falló al intentar copiar: ', err);
+                });
+                })
+}
