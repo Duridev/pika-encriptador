@@ -1,5 +1,5 @@
 const consonantes = ["n", "s", "r", "l", "d", "t", "c", "m", "p", "b"];
-const vocales = ["a", "e", "i", "o", "u", "a", "e", "i", "o", "u"];
+const vocales = ["a", "e", "i", "o", "u"];
 
 
 // FUNCION PARA ENCRIPTAR
@@ -29,6 +29,10 @@ function Encriptar() {
 
     // Paso 7: limpar el HTML y mostrar texto encriptado
     mostrarTextEncriptado(TextoEncriptadoListo);
+
+
+    // Limpiar area de texto luego de encriptar
+    limpiarTextArea()
 
 }
 
@@ -112,15 +116,43 @@ function limpiarLadoDerecho() {
     ladoDerecho.innerHTML= "";
 }
 
+
+
 function mostrarTextEncriptado(text) {
     const ventanaTexto = document.querySelector('.right-area');
-    limpiarLadoDerecho();
-    const parrafo = document.createElement('P');
-    ventanaTexto.appendChild(parrafo);
-    parrafo.textContent = text;
-    parrafo.classList.add('.mostrar-texto-encriptado');
-    ventanaTexto.classList.remove('')
-    ventanaTexto.classList.add('')
 
+    limpiarLadoDerecho();
+    const divTop = document.createElement('div');
+    ventanaTexto.appendChild(divTop);
+    divTop.classList.add('div-top');
+    
+    const divBottom = document.createElement('div');
+    ventanaTexto.appendChild(divBottom);
+    divBottom.classList.add('div-bottom');
+
+    const parrafo = document.createElement('p');
+    divTop.appendChild(parrafo);
+    parrafo.classList.add('parrafo-texto');
+
+
+    const imgPika = document.createElement('img');
+    imgPika.src="./assets/img/pika-saludo-cortado.png";
+    imgPika.classList.add('pikachu-saludando')
+    ventanaTexto.appendChild(imgPika);
+
+    parrafo.textContent = text;
+    parrafo.classList.add('mostrar-texto-encriptado');
+
+    ventanaTexto.style.justifyContent = 'space-between';
+    ventanaTexto.style.textAlign = 'left';
+    ventanaTexto.style.paddingBottom = 0;
+    ventanaTexto.style.paddingTop = "1rem";
 
 }
+
+function limpiarTextArea() {
+    const textArea = document.querySelector('#text-area');
+    textArea.value = '';
+}
+
+function

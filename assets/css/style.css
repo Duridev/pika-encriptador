@@ -165,7 +165,61 @@ svg {
 }
 
 .picachu-con-lupa {
-    max-width: 150px
+    width: 150px;
+    max-width: 90%;
+}
+
+.pikachu-saludando {
+    width: 250px;
+    max-width: 90%;
+    bottom: 0;
+}
+
+.div-top {
+    width: 100%;
+    right: -3rem;
+    left: 3rem;
+    height: 80%;
+
+}
+
+.parrafo-texto {
+    max-width: 95%;
+    height: 100%;
+    max-height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    display: inline-block;
+    scrollbar-gutter: stable;
+}
+
+.parrafo-texto::-webkit-scrollbar {
+    width: 6px;
+
+}
+
+.parrafo-texto::-webkit-scrollbar-thumb {
+    background: brown;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.parrafo-texto::-webkit-scrollbar-thumb:hover {
+    background: #FFCB05;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+
+.parrafo-texto::-webkit-scrollbar-track {
+    background: lightgoldenrodyellow;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.parrafo-texto::-webkit-scrollbar-track:active {
+  background: rgb(210, 210, 180);
 }
 
 
@@ -176,5 +230,7 @@ svg {
 footer p {
     text-align: center;
     margin: 0;
-
 }
+
+
+aaaaaaaaaaaaaaaaaaaaaaaaa a aaaaa a a a a a a a a a a a a a a a a a a a aaaaaaaaaaaa
