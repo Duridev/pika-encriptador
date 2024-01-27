@@ -162,23 +162,36 @@ function botonCopiarTexto() {
 
     const parrafo = document.querySelector('.parrafo-texto');
     const divBottom = document.querySelector('.div-bottom');
-    const botonCopiar = document.createElement('button');
+
 
     if (parrafo != '') {
+        const botonCopiar = document.createElement('button');
         divBottom.appendChild(botonCopiar)
         botonCopiar.classList.add('boton-copiar')
         botonCopiar.innerHTML='Pika-Copiar';
+        botonCopiar.onclick = copiarTexto;
     }
 }
 
+// function copiarTexto() {
+//     const botonCopiar = document.querySelector(".boton-copiar");
+//     const parrafo = document.querySelector('.parrafo-texto');
+//     botonCopiar.addEventListener("click", function () {
+//         navigator.clipboard.writeText(parrafo.innerText).then(() => {
+//             alert('¡El texto ha sido copiado!');
+//             }, err => {
+//                 console.error('Falló al intentar copiar: ', err);
+//                 });
+//                 })
+// }
+
 function copiarTexto() {
-    const botonCopiar = document.querySelector(".boton-copiar");
     const parrafo = document.querySelector('.parrafo-texto');
-    botonCopiar.addEventListener("click", function () {
-        navigator.clipboard.writeText(parrafo.innerText).then(() => {
+    navigator.clipboard.writeText(parrafo.innerText)
+        .then(() => {
             alert('¡El texto ha sido copiado!');
-            }, err => {
-                console.error('Falló al intentar copiar: ', err);
-                });
-                })
+        })
+        .catch(err => {
+            console.error('Falló al intentar copiar: ', err);
+        });
 }
