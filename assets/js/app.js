@@ -116,8 +116,11 @@ function mostrarTextEncriptado(text) {
     const ventanaTexto = document.querySelector('.right-area');
     limpiarLadoDerecho();
     const parrafo = document.createElement('P');
+    ventanaTexto.appendChild(parrafo);
     parrafo.textContent = text;
-    parrafo.classList.add('.mostrar-texto-encriptado')
+    parrafo.classList.add('.mostrar-texto-encriptado');
+    ventanaTexto.classList.remove('')
+    ventanaTexto.classList.add('')
 
 
 }
