@@ -8,6 +8,7 @@ const vocales = ["a", "e", "i", "o", "u"];
 
 }*/
 function Encriptar() {
+
     // Paso 1: Obtener el texto del área de texto
     const texto = valorTextArea();
 
@@ -43,10 +44,27 @@ function Encriptar() {
 // FUNCIONES PARA ENCRIPTAR EL TEXTO ****************************************
 
 function valorTextArea() {
-    const textArea = document.querySelector('#text-area').value;
-    //console.log(textArea);
-    return textArea;
+    const textArea = document.querySelector('#text-area');
+    const contenido = textArea.value;
+    const soloMinusculasSinTildes = /^(?=[\s\S]*[a-z])[\n\s]*[a-z\s]*$/;
+    const parrafo = document.querySelector('#parrafo-advertencia');
+
+    if (soloMinusculasSinTildes.test(contenido)) {
+        // Si el contenido es válido, devolver el texto y restaurar el estilo del borde
+        textArea.style.border = '1px solid black'; // Restaurar el estilo del borde
+        parrafo.style.color = 'black'
+        parrafo.style.fontSize = ''
+        return contenido;
+    } else {
+        // Si el contenido no es válido, cambiar el estilo del borde
+        textArea.style.border = '3px solid red';
+        parrafo.style.color = 'red'
+        parrafo.style.fontSize = '1.5rem'
+        parrafo.style.fontweight = 'bold'
+        return null; // O puedes devolver un valor que indique que hay un error
+    }
 };
+
 
 function separarPalabrasArray(texto) {
     const arrayPalabras = texto.split(/\s+/);
