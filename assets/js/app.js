@@ -32,12 +32,12 @@ function Encriptar() {
 
 
     // Limpiar area de texto luego de encriptar
-    limpiarTextArea()
+    limpiarTextArea();
 
     // Creación boton copiar texto encriptado
-    botonCopiarTexto()
+    botonCopiarTexto();
 
-}
+};
 
 
 // FUNCIONES PARA ENCRIPTAR EL TEXTO ****************************************
@@ -46,13 +46,13 @@ function valorTextArea() {
     const textArea = document.querySelector('#text-area').value;
     //console.log(textArea);
     return textArea;
-}
+};
 
 function separarPalabrasArray(texto) {
     const arrayPalabras = texto.split(/\s+/);
     //console.log(arrayPalabras);
     return arrayPalabras;
-}
+};
 
 function separarLetrasInvertidasArray(arr) {
 
@@ -62,7 +62,7 @@ function separarLetrasInvertidasArray(arr) {
     }
     //console.log(arrayLetrasSeparadasInvertidas);
     return arrayLetrasSeparadasInvertidas;
-}
+};
 
 function adicionarLetrasArray(arr) {             
     const arrayConLetrasAdicionadas = [];
@@ -76,10 +76,10 @@ function adicionarLetrasArray(arr) {
             palabrasConLetrasAdicionadas.push(consRamdom + vocRamdom + arr[i][j]);
         }
         arrayConLetrasAdicionadas.push(palabrasConLetrasAdicionadas);
-    }
+    };
     //console.log(arrayConLetrasAdicionadas);
     return arrayConLetrasAdicionadas;
-}
+};
 
 
 function juntarLetrasPalabrasArray(arr) {
@@ -95,31 +95,29 @@ function juntarLetrasPalabrasArray(arr) {
         }
         //console.log(arrayLetrasJuntadas.join(''));
         palabrasConLetrasJuntas.push("pika" + arrayLetrasJuntadas.join(''));
-    }
+    };
     
     const arrayPalabrasConLetrasJuntas = palabrasConLetrasJuntas;
 
     console.log(arrayPalabrasConLetrasJuntas);
     return arrayPalabrasConLetrasJuntas;
-}
+};
 
 function arrayATextoEncriptado(arr) {
     let textoEncriptado = "";
 
     for (let i = 0; i < arr.length; i++) {
         textoEncriptado += arr[i] + " ";
-    }
+    };
         console.log(textoEncriptado);
         return textoEncriptado;
-}
+};
 
 function limpiarLadoDerecho() {
     const ladoDerecho = document.querySelector('.right-area');
 
     ladoDerecho.innerHTML= "";
-}
-
-
+};
 
 function mostrarTextEncriptado(text) {
     const ventanaTexto = document.querySelector('.right-area');
@@ -140,7 +138,7 @@ function mostrarTextEncriptado(text) {
 
     const imgPika = document.createElement('img');
     imgPika.src="./assets/img/pika-saludo-cortado.png";
-    imgPika.classList.add('pikachu-saludando')
+    imgPika.classList.add('pikachu-saludando');
     ventanaTexto.appendChild(imgPika);
 
     parrafo.textContent = text;
@@ -151,12 +149,12 @@ function mostrarTextEncriptado(text) {
     ventanaTexto.style.paddingBottom = 0;
     ventanaTexto.style.paddingTop = "1rem";
 
-}
+};
 
 function limpiarTextArea() {
     const textArea = document.querySelector('#text-area');
     textArea.value = '';
-}
+};
 
 function botonCopiarTexto() {
 
@@ -166,32 +164,32 @@ function botonCopiarTexto() {
 
     if (parrafo != '') {
         const botonCopiar = document.createElement('button');
-        divBottom.appendChild(botonCopiar)
-        botonCopiar.classList.add('boton-copiar')
+        divBottom.appendChild(botonCopiar);
+        botonCopiar.classList.add('boton-copiar');
         botonCopiar.innerHTML='Pika-Copiar';
         botonCopiar.onclick = copiarTexto;
-    }
-}
+    };
+};
 
-// function copiarTexto() {
-//     const botonCopiar = document.querySelector(".boton-copiar");
-//     const parrafo = document.querySelector('.parrafo-texto');
-//     botonCopiar.addEventListener("click", function () {
-//         navigator.clipboard.writeText(parrafo.innerText).then(() => {
-//             alert('¡El texto ha sido copiado!');
-//             }, err => {
-//                 console.error('Falló al intentar copiar: ', err);
-//                 });
-//                 })
-// }
+
 
 function copiarTexto() {
     const parrafo = document.querySelector('.parrafo-texto');
     navigator.clipboard.writeText(parrafo.innerText)
         .then(() => {
-            alert('¡El texto ha sido copiado!');
+            Swal.fire({
+                position: "bottom-end",
+                title: "Listo!",
+                text: "Texto copiado exitosamente",
+                html: '<img src="../assets/img/pikajockey.png" width="150px" style="margin: auto"><p style="font-size: 1.8rem">Texto copiado exitosamente</p>',
+                showConfirmButton: false,
+                timer: 1500
+              });
         })
         .catch(err => {
             console.error('Falló al intentar copiar: ', err);
         });
-}
+};
+
+
+
