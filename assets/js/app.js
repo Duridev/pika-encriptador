@@ -30,7 +30,7 @@ function encriptar() {
     const TextoEncriptadoListo = arrayATextoEncriptado(palabrasEncriptadas);
 
     // Paso 7: limpar el HTML y mostrar texto encriptado
-    mostrarTextEncriptado(TextoEncriptadoListo);
+    mostrarTextoEncriptado(TextoEncriptadoListo);
 
 
     // Limpiar area de texto luego de encriptar
@@ -156,10 +156,11 @@ function limpiarLadoDerecho() {
     ladoDerecho.innerHTML= "";
 };
 
-function mostrarTextEncriptado(text) {
+function mostrarTextoEncriptado(text) {
     const ventanaTexto = document.querySelector('.right-area');
 
     limpiarLadoDerecho();
+    
     const divTop = document.createElement('div');
     ventanaTexto.appendChild(divTop);
     divTop.classList.add('div-top');
@@ -240,7 +241,15 @@ function desencriptar() {
 
     const palabrasReversadas = invertirOrdenDePalabras(pikasEliminados);
 
-    const palbrasReunidas = reunirLetras(palabrasReversadas)
+    const sinLetrasAdicionales = removerCaracteresAdicionales(palabrasReversadas);
+
+    const arrayDePalabrasListas = reunirLetras(sinLetrasAdicionales);
+
+    const textoDesencriptado = convertirArrayAOracion(arrayDePalabrasListas);
+
+    const mostrarTextoDesencriptado = mostrarTextoDesencriptado
+
+    limpiarTextArea();
 
 
 }
@@ -291,7 +300,23 @@ function invertirOrdenDePalabras(arr){
     return arr;
 }
 
-// reunimos las letras para formar las palabras nuevamente
+// eliminamos las letras agregadas a cada palabra
+function removerCaracteresAdicionales(arr){
+    const arrayReunido = []
+
+    for(let i = 0; i < arr.length; i++) {
+        const newArr = []
+
+        for (let j = 0; j < arr[i].length; j+=3) {
+            newArr.push(arr[i][j]);
+        };
+        arrayReunido.push(newArr);
+    };
+    console.log(arrayReunido);
+    return arrayReunido;
+};
+
+// reunimos las letras del array para formar las palabras
 function reunirLetras(arr){
     const newArray = []
     for(let i = 0; i < arr.length; i++){
@@ -300,8 +325,17 @@ function reunirLetras(arr){
     console.log(newArray);
     return newArray;
 }
+// Unimos las palabras en una sola oración de tipo String
+function convertirArrayAOracion(arr) {
+    oracion = arr.join(' ');
+    console.log(oracion);
+    return oracion;
+}
 
-// eliminamos las letras agregadas a cada palabra
-function removerCaracteresAdicionales(arr){
+function mostrarTextoDesencriptado(text) {
+    const textArea = document.querySelector('#text-area');
+
+    textArea.createElement('p')
+    
     
 }
