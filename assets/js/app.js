@@ -251,6 +251,8 @@ function desencriptar() {
 
     mostrarTextoDesencriptado(textoDesencriptado);
 
+    botonCopiarTexto();
+
 }
 
 // FUNCIONES PARA DESENCRIPTAR EL TEXTO ****************************************
