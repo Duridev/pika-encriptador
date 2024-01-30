@@ -100,7 +100,22 @@ p {
 
 .advertencia p {
     margin-top: 0;
+}
 
+.parpadeando {
+    animation: parpadeo 1.5s infinite;
+}
+
+@keyframes parpadeo {
+    0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
 }
 
 /* LEFT AREA */
@@ -125,7 +140,14 @@ p {
     min-width: 50%;
     height: 50%;
     max-width: 650px;
+
 }
+
+#text-area:focus {
+  outline: none;
+}
+
+
 
 svg {
     width: 2rem;
@@ -141,7 +163,7 @@ svg {
     height: 95%;
     margin: 1rem;
     padding: 3rem 1rem;
-    background-color: lightgoldenrodyellow;
+    background-color: #fafafa;
     border-radius: 20px;
     border: 3px solid brown;
     display: flex;
@@ -219,12 +241,13 @@ svg {
 .boton-copiar  {
     font-size: 1.7rem;
     font-family: 'VT323', monospace;
-    background-color: lightgoldenrodyellow;
+    background-color: white;
     border-radius: 20px;
     cursor: pointer;
     height: 2rem;
     width: 10rem;
     z-index: 1;
+    border: 3px outset black;
 }
 
 #button-encriptar:hover,
@@ -233,24 +256,23 @@ svg {
     color: #FFCB05;
     background-color: rgba(52, 101, 175, 0.8);
     transition: .5s ease all;
-    border: 2px solid white;
+    border: 3px outset white;
 
 }
 
 #button-encriptar:active,
 #button-desencriptar:active,
 .boton-copiar:active {
-    background-color: rgba(52, 101, 175);
+    background-color: rgba(50, 100, 190);
     transition: .05s;
-    border: 2px solid white;
-    font-weight: bold;
+    border: 3px inset white;
 }
 
 
 #button-encriptar,
 #button-desencriptar {
     font-size: 2rem;
-    background-color: lightgoldenrodyellow;
+    background-color: white;
     border-radius: 20px;
     height: 2.5rem;
     width: 18rem;

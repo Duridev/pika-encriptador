@@ -2,12 +2,13 @@ const consonantes = ["n", "s", "r", "l", "d", "t", "c", "m", "p", "b"];
 const vocales = ["a", "e", "i", "o", "u"];
 
 
+
 // FUNCION PARA ENCRIPTAR
 /*function Encriptar() {
     arrayATextoEncriptado(juntarLetrasPalabrasArray(adicionarLetrasArray(separarLetrasInvertidasArray(separarPalabrasArray(valorTextArea())))));
 
 }*/
-function Encriptar() {
+function encriptar() {
 
     // Paso 1: Obtener el texto del área de texto
     const texto = valorTextArea();
@@ -41,26 +42,47 @@ function Encriptar() {
 };
 
 
-// FUNCIONES PARA ENCRIPTAR EL TEXTO ****************************************
+// FUNCIONES VALIDACION DE FORMULARIO ****************************************
 
-function valorTextArea() {
+function validacionTextArea() {
     const textArea = document.querySelector('#text-area');
     const contenido = textArea.value;
-    const soloMinusculasSinTildes = /^(?=[\s\S]*[a-z])[\n\s]*[a-z\s]*$/;
+    const soloMinusculasSinTildes = /^(?:[a-z\s]*)?$/;
     const parrafo = document.querySelector('#parrafo-advertencia');
+    const pokeball = document.querySelector('.pokeball');
 
     if (soloMinusculasSinTildes.test(contenido)) {
         // Si el contenido es válido, devolver el texto y restaurar el estilo del borde
-        textArea.style.border = '1px solid black'; // Restaurar el estilo del borde
-        parrafo.style.color = 'black'
-        parrafo.style.fontSize = ''
+        textArea.style.border = '2px solid black'; // Restaurar el estilo del borde
+        parrafo.style.color = 'black';
+        pokeball.classList.remove('parpadeando');
+
+    } else {
+        // Si el contenido no es válido, cambiar el estilo del borde
+        textArea.style.border = '2px solid red';
+        parrafo.style.color = 'red';
+        parrafo.style.fontweight = 'bold';
+        pokeball.classList.add('parpadeando');
+
+    }
+};
+
+// FUNCIONES PARA ENCRIPTAR EL TEXTO ****************************************
+
+function valorTextArea() {
+    const contenido = document.querySelector('#text-area').value;
+   // const contenido = textArea.value;
+    const soloMinusculasSinTildes = /^(?=[\s\S]*[a-z])[\n\s]*[a-z\s]*$/;
+
+    if (soloMinusculasSinTildes.test(contenido)) {
+ 
         return contenido;
     } else {
         // Si el contenido no es válido, cambiar el estilo del borde
-        textArea.style.border = '3px solid red';
-        parrafo.style.color = 'red'
-        parrafo.style.fontSize = '1.5rem'
-        parrafo.style.fontweight = 'bold'
+        Swal.fire({
+            title: "Error de capa 8",
+            html: '<img src="../assets/img/pikachu-pokemon.gif" width="150px" style="margin: auto"><p style="font-size: 1.8rem">Escribe solo letras minúsculas sin tildes ni caracteres especiales</p>'
+          });
         return null; // O puedes devolver un valor que indique que hay un error
     }
 };
@@ -68,7 +90,6 @@ function valorTextArea() {
 
 function separarPalabrasArray(texto) {
     const arrayPalabras = texto.split(/\s+/);
-    //console.log(arrayPalabras);
     return arrayPalabras;
 };
 
@@ -78,7 +99,6 @@ function separarLetrasInvertidasArray(arr) {
     for(let i = 0; i < arr.length; i++){
         arrayLetrasSeparadasInvertidas.push(arr[i].split('').reverse());
     }
-    //console.log(arrayLetrasSeparadasInvertidas);
     return arrayLetrasSeparadasInvertidas;
 };
 
@@ -95,7 +115,6 @@ function adicionarLetrasArray(arr) {
         }
         arrayConLetrasAdicionadas.push(palabrasConLetrasAdicionadas);
     };
-    //console.log(arrayConLetrasAdicionadas);
     return arrayConLetrasAdicionadas;
 };
 
@@ -198,7 +217,6 @@ function copiarTexto() {
             Swal.fire({
                 position: "bottom-end",
                 title: "Listo!",
-                text: "Texto copiado exitosamente",
                 html: '<img src="../assets/img/pikajockey.png" width="150px" style="margin: auto"><p style="font-size: 1.8rem">Texto copiado exitosamente</p>',
                 showConfirmButton: false,
                 timer: 1500
@@ -211,3 +229,79 @@ function copiarTexto() {
 
 
 
+
+function desencriptar() {
+
+    const arrayDePalabras = pasarDePalabrasAArray();
+
+    const arrayDeLetras = pasarArrayPalabrasALetras(arrayDePalabras);
+
+    const pikasEliminados = eliminarPikaDePalabras(arrayDeLetras);
+
+    const palabrasReversadas = invertirOrdenDePalabras(pikasEliminados);
+
+    const palbrasReunidas = reunirLetras(palabrasReversadas)
+
+
+}
+
+// FUNCIONES PARA DESENCRIPTAR EL TEXTO ****************************************
+
+
+
+
+
+// Seleccionar el codigo y convertirlo en array de palabras
+function pasarDePalabrasAArray() {
+    const textArea = document.querySelector('#text-area').value;
+
+    const arrayPalabrasEncriptado = textArea.split(' ');
+    console.log(arrayPalabrasEncriptado);
+    return arrayPalabrasEncriptado;
+}
+
+// Convertimos el array de palabras,a array de letras con subindice
+function pasarArrayPalabrasALetras(arr) {
+    const arrayLetras = []
+    
+    for(let i = 0; i < arr.length; i++) {
+        const letrasPorPalabra = arr[i].split('');
+        arrayLetras.push(letrasPorPalabra);
+    }
+    console.log(arrayLetras);
+    return arrayLetras;
+    
+}
+
+// Quitamos todos los "pika" de las palabras
+function eliminarPikaDePalabras(arr) {
+    for(let i = 0; i < arr.length; i++){
+        arr[i].splice(0, 4)
+        }
+        console.log(arr);
+        return arr;
+}
+
+// Invertimos el orden de los elementos del array
+function invertirOrdenDePalabras(arr){
+    for(let i = 0; i < arr.length; i++){
+        arr[i].reverse()
+    }
+    console.log(arr);
+    return arr;
+}
+
+// reunimos las letras para formar las palabras nuevamente
+function reunirLetras(arr){
+    const newArray = []
+    for(let i = 0; i < arr.length; i++){
+        newArray.push(arr[i].join(''))
+    }
+    console.log(newArray);
+    return newArray;
+}
+
+// eliminamos las letras agregadas a cada palabra
+function removerCaracteresAdicionales(arr){
+    
+}
