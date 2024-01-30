@@ -160,7 +160,7 @@ function mostrarTextoEncriptado(text) {
     const ventanaTexto = document.querySelector('.right-area');
 
     limpiarLadoDerecho();
-    
+
     const divTop = document.createElement('div');
     ventanaTexto.appendChild(divTop);
     divTop.classList.add('div-top');
@@ -247,10 +247,9 @@ function desencriptar() {
 
     const textoDesencriptado = convertirArrayAOracion(arrayDePalabrasListas);
 
-    const mostrarTextoDesencriptado = mostrarTextoDesencriptado
-
     limpiarTextArea();
 
+    mostrarTextoDesencriptado(textoDesencriptado);
 
 }
 
@@ -332,10 +331,36 @@ function convertirArrayAOracion(arr) {
     return oracion;
 }
 
-function mostrarTextoDesencriptado(text) {
-    const textArea = document.querySelector('#text-area');
 
-    textArea.createElement('p')
+function mostrarTextoDesencriptado(text) {
+    const ventanaTexto = document.querySelector('.right-area');
+
+    limpiarLadoDerecho();
     
+    const divTop = document.createElement('div');
+    ventanaTexto.appendChild(divTop);
+    divTop.classList.add('div-top');
     
-}
+    const divBottom = document.createElement('div');
+    ventanaTexto.appendChild(divBottom);
+    divBottom.classList.add('div-bottom');
+
+    const parrafo = document.createElement('p');
+    divTop.appendChild(parrafo);
+    parrafo.classList.add('parrafo-texto');
+
+
+    const imgPika = document.createElement('img');
+    imgPika.src="./assets/img/pika-saludo-cortado.png";
+    imgPika.classList.add('pikachu-saludando');
+    ventanaTexto.appendChild(imgPika);
+
+    parrafo.textContent = text;
+    parrafo.classList.add('mostrar-texto-encriptado');
+
+    ventanaTexto.style.justifyContent = 'space-between';
+    ventanaTexto.style.textAlign = 'left';
+    ventanaTexto.style.paddingBottom = 0;
+    ventanaTexto.style.paddingTop = "1rem";
+
+};
