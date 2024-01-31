@@ -426,7 +426,7 @@ footer a {
 @media (width <= 575px) {
 
     body {
-        background-image: url(../img/bg-responsive.jpg);
+        background-image: url(../img/bg-responsive2.jpg);
         background-attachment: fixed;
         background-size: cover;
         background-position:center;
