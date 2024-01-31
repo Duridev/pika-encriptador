@@ -130,13 +130,11 @@ function juntarLetrasPalabrasArray(arr) {
         for (let j = 0; j < arr[i].length; j++) {
             arrayLetrasJuntadas.push(arr[i][j]);
         }
-        //console.log(arrayLetrasJuntadas.join(''));
         palabrasConLetrasJuntas.push("pika" + arrayLetrasJuntadas.join(''));
     };
     
     const arrayPalabrasConLetrasJuntas = palabrasConLetrasJuntas;
 
-    console.log(arrayPalabrasConLetrasJuntas);
     return arrayPalabrasConLetrasJuntas;
 };
 
@@ -146,7 +144,6 @@ function arrayATextoEncriptado(arr) {
     for (let i = 0; i < arr.length; i++) {
         textoEncriptado += arr[i] + " ";
     };
-        console.log(textoEncriptado);
         return textoEncriptado;
 };
 
@@ -266,7 +263,7 @@ function pasarDePalabrasAArray() {
     const textArea = document.querySelector('#text-area').value;
 
     const arrayPalabrasEncriptado = textArea.split(' ');
-    console.log(arrayPalabrasEncriptado);
+
     return arrayPalabrasEncriptado;
 }
 
@@ -278,7 +275,6 @@ function pasarArrayPalabrasALetras(arr) {
         const letrasPorPalabra = arr[i].split('');
         arrayLetras.push(letrasPorPalabra);
     }
-    console.log(arrayLetras);
     return arrayLetras;
     
 }
@@ -288,7 +284,6 @@ function eliminarPikaDePalabras(arr) {
     for(let i = 0; i < arr.length; i++){
         arr[i].splice(0, 4)
         }
-        console.log(arr);
         return arr;
 }
 
@@ -297,7 +292,6 @@ function invertirOrdenDePalabras(arr){
     for(let i = 0; i < arr.length; i++){
         arr[i].reverse()
     }
-    console.log(arr);
     return arr;
 }
 
@@ -313,7 +307,6 @@ function removerCaracteresAdicionales(arr){
         };
         arrayReunido.push(newArr);
     };
-    console.log(arrayReunido);
     return arrayReunido;
 };
 
@@ -323,13 +316,12 @@ function reunirLetras(arr){
     for(let i = 0; i < arr.length; i++){
         newArray.push(arr[i].join(''))
     }
-    console.log(newArray);
     return newArray;
 }
 // Unimos las palabras en una sola oración de tipo String
 function convertirArrayAOracion(arr) {
     oracion = arr.join(' ');
-    console.log(oracion);
+    
     return oracion;
 }
 
