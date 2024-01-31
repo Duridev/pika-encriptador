@@ -325,6 +325,11 @@ footer a {
 /* Media Querys */
 
 @media (width <= 1000px) {
+
+    h1 {
+        margin-top: 10px;
+    }
+
     .footer-inicial {
         display: none;
     }
@@ -367,9 +372,13 @@ footer a {
     .advertencia {
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: stretch;
         margin: 2rem auto 1rem auto;
 
+    }
+
+    .pokeball {
+        margin-right: 0.5rem;
     }
 
     .buttons {
@@ -383,7 +392,7 @@ footer a {
     #button-encriptar,
     #button-desencriptar {
         min-width: 12rem;
-        margin: 0.5rem 0;
+        margin: 0.5rem 1rem;
     }
 
     .right-area {
@@ -401,6 +410,14 @@ footer a {
 
     #button-desencriptar {
         margin-top: 1rem;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        
     }
 
 
