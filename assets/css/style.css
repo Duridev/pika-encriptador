@@ -428,6 +428,7 @@ footer a {
     body {
         background-image: url(../img/bg-responsive.jpg);
         background-attachment: fixed;
+        background-position:top;
     }
     h1 {
         font-size: 2.5rem;
