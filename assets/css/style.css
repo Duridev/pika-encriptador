@@ -429,6 +429,7 @@ footer a {
         background-image: url(../img/bg-responsive2.jpg);
         background-repeat: no-repeat;
         background-position:top;
+        background-size:100%;
     }
 
     h1 {
