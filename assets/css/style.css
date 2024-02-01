@@ -431,7 +431,6 @@ footer a {
 
     .supra-container{
         background-image: url(../img/bg-responsive2.jpg);
-        background-attachment:scroll;
         background-repeat: no-repeat;
         background-position:top;
     }
