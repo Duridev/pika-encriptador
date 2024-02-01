@@ -10,6 +10,7 @@ const vocales = ["a", "e", "i", "o", "u"];
 }*/
 function encriptar() {
 
+
     // Paso 1: Obtener el texto del área de texto
     const texto = valorTextArea();
 
@@ -63,7 +64,6 @@ function validacionTextArea() {
         parrafo.style.color = 'red';
         parrafo.style.fontweight = 'bold';
         pokeball.classList.add('parpadeando');
-
     }
 };
 
@@ -71,6 +71,7 @@ function validacionTextArea() {
 
 function valorTextArea() {
     const contenido = document.querySelector('#text-area').value;
+    const parrafoTexto = document.querySelector('.parrafo-texto');
    // const contenido = textArea.value;
     const soloMinusculasSinTildes = /^(?=[\s\S]*[a-z])[\n\s]*[a-z\s]*$/;
 
@@ -85,6 +86,7 @@ function valorTextArea() {
           });
         return null; // O puedes devolver un valor que indique que hay un error
     }
+
 };
 
 
@@ -230,7 +232,11 @@ function copiarTexto() {
 
 function desencriptar() {
 
-    const arrayDePalabras = pasarDePalabrasAArray();
+    limpiarTextArea();
+
+    const texto = valorTextArea();
+
+    const arrayDePalabras = pasarDePalabrasAArray(texto);
 
     const arrayDeLetras = pasarArrayPalabrasALetras(arrayDePalabras);
 
@@ -259,10 +265,10 @@ function desencriptar() {
 
 
 // Seleccionar el codigo y convertirlo en array de palabras
-function pasarDePalabrasAArray() {
-    const textArea = document.querySelector('#text-area').value;
+function pasarDePalabrasAArray(texto) {
+   // const textArea = document.querySelector('#text-area').value;
 
-    const arrayPalabrasEncriptado = textArea.split(' ');
+    const arrayPalabrasEncriptado = texto.split(' ');
 
     return arrayPalabrasEncriptado;
 }

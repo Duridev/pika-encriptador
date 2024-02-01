@@ -426,10 +426,6 @@ footer a {
 @media (width <= 575px) {
 
     body {
-        background-image:none
-    }
-
-    .supra-container{
         background-image: url(../img/bg-responsive2.jpg);
         background-repeat: no-repeat;
         background-position:top;
