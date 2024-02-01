@@ -426,11 +426,16 @@ footer a {
 @media (width <= 575px) {
 
     body {
+        background-image:none
+    }
+
+    .supra-container{
         background-image: url(../img/bg-responsive2.jpg);
         background-attachment: fixed;
         background-size: cover;
         background-position:top;
     }
+
     h1 {
         font-size: 2.5rem;
         margin: 1.5rem auto;
