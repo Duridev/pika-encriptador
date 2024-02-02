@@ -17,29 +17,33 @@ function encriptar() {
     // Paso 2: Separar las palabras del texto en un array
     const palabrasSeparadas = separarPalabrasArray(texto);
 
-    // Paso 3: Invertir las letras de cada palabra
-    const palabrasInvertidas = separarLetrasInvertidasArray(palabrasSeparadas);
-
     // Paso 4: Añadir letras aleatorias a cada palabra
-    const palabrasConLetrasAdicionadas = adicionarLetrasArray(palabrasInvertidas);
+    const palabrasConLetrasAdicionadas = adicionarLetrasArray(palabrasSeparadas);
+    
+    // Paso 3: Invertir las letras de cada palabra
+    const palabrasInvertidas = invertirArray(palabrasConLetrasAdicionadas);
+    
+    // Paso 5: Juntar las letras de cada palabra
+    const palabrasEncriptadas = juntarLetrasPalabrasArray(palabrasInvertidas);
 
-    // Paso 5: Juntar las letras de cada palabra y añadir prefijo "pika"
-    const palabrasEncriptadas = juntarLetrasPalabrasArray(palabrasConLetrasAdicionadas);
 
+    // Paso 7: Cambiar las vocales por lo solicitado en el challenge
+    const textoSegunChallenge = encriptacionChallenge(palabrasEncriptadas)
 
-    // Paso 6: Convertir el array de palabras encriptadas a texto encriptado
-    const TextoEncriptadoListo = arrayATextoEncriptado(palabrasEncriptadas);
+    // Paso 8: Añadir el prefijo "pika" a cada palabra
+    const palabrasConPika = incluirPika(textoSegunChallenge)
 
-    // Paso 7: limpar el HTML y mostrar texto encriptado
+    // Paso 9: Convertir el array de palabras encriptadas a string encriptado
+    const TextoEncriptadoListo = arrayATexto(palabrasConPika);
+
+    // Paso 10: limpar el HTML y mostrar texto encriptado
     mostrarTextoEncriptado(TextoEncriptadoListo);
-
 
     // Limpiar area de texto luego de encriptar
     limpiarTextArea();
 
     // Creación boton copiar texto encriptado
     botonCopiarTexto();
-
 };
 
 
@@ -71,37 +75,26 @@ function validacionTextArea() {
 
 function valorTextArea() {
     const contenido = document.querySelector('#text-area').value;
-    const parrafoTexto = document.querySelector('.parrafo-texto');
-   // const contenido = textArea.value;
+   //const contenido = textArea.value;
     const soloMinusculasSinTildes = /^(?=[\s\S]*[a-z])[\n\s]*[a-z\s]*$/;
 
     if (soloMinusculasSinTildes.test(contenido)) {
  
         return contenido;
     } else {
-        // Si el contenido no es válido, cambiar el estilo del borde
         Swal.fire({
             title: "Error de capa 8",
             html: '<img src="../assets/img/pikachu-pokemon.gif" width="150px" style="margin: auto"><p style="font-size: 1.8rem">Escribe solo letras minúsculas sin tildes ni caracteres especiales</p>'
           });
-        return null; // O puedes devolver un valor que indique que hay un error
+        return null;
     }
-
 };
 
 
 function separarPalabrasArray(texto) {
     const arrayPalabras = texto.split(/\s+/);
+    console.log('**separar palabras en array:', arrayPalabras);
     return arrayPalabras;
-};
-
-function separarLetrasInvertidasArray(arr) {
-
-    const arrayLetrasSeparadasInvertidas = [];
-    for(let i = 0; i < arr.length; i++){
-        arrayLetrasSeparadasInvertidas.push(arr[i].split('').reverse());
-    }
-    return arrayLetrasSeparadasInvertidas;
 };
 
 function adicionarLetrasArray(arr) {             
@@ -111,42 +104,70 @@ function adicionarLetrasArray(arr) {
         const palabrasConLetrasAdicionadas = [];
 
         for(let j = 0; j < arr[i].length; j++) {
-            consRamdom = consonantes[Math.floor(Math.random() * consonantes.length)];
-            vocRamdom = vocales[Math.floor(Math.random() * vocales.length)];
-            palabrasConLetrasAdicionadas.push(consRamdom + vocRamdom + arr[i][j]);
+            consRandom = consonantes[Math.floor(Math.random() * consonantes.length)];
+            vocRandom = vocales[Math.floor(Math.random() * vocales.length)];
+            palabrasConLetrasAdicionadas.push(consRandom + vocRandom + arr[i][j]);
         }
         arrayConLetrasAdicionadas.push(palabrasConLetrasAdicionadas);
     };
+    console.log('**arr con letyras adicionadas:', arrayConLetrasAdicionadas);
     return arrayConLetrasAdicionadas;
 };
 
+function invertirArray(arr) {
+    const newArr = [];
+    for(let i = 0; i < arr.length; i++){
+        newArr.push(arr[i].slice().reverse())
+    }
+    console.log('**array reversado:', newArr);
+    return newArr
+}
+
+
 
 function juntarLetrasPalabrasArray(arr) {
-
-    const palabrasConLetrasJuntas = [];
-
+    const arrayPalabrasConLetrasJuntas = [];
 
     for (let i = 0; i < arr.length; i++) {
-        const arrayLetrasJuntadas = [];
+        arrayPalabrasConLetrasJuntas.push(arr[i].join(''));
+    }
+    const palabrasConLetrasJuntas = arrayPalabrasConLetrasJuntas.join(' ');
+    console.log(palabrasConLetrasJuntas);
+    return palabrasConLetrasJuntas;
+}
 
-        for (let j = 0; j < arr[i].length; j++) {
-            arrayLetrasJuntadas.push(arr[i][j]);
+
+function encriptacionChallenge(text) {
+    console.log('**antes de encriptar:', text);
+    text = text.replace(/e/g, 'enter');
+    text = text.replace(/i/g, 'imes');
+    text = text.replace(/a/g, 'ai');
+    text = text.replace(/o/g, 'ober');
+    text = text.replace(/u/g, 'ufat');
+    console.log('**despues de encriptar:', text);
+    return text;
+}
+
+function incluirPika(text) {
+    const arr = text.split(' ')
+    const arrConPika = []
+    for(let i = 0; i <  arr.length; i++){
+        if(arr[i] !==  '') {
+        arrConPika.push("pika" + arr[i]);
         }
-        palabrasConLetrasJuntas.push("pika" + arrayLetrasJuntadas.join(''));
-    };
-    
-    const arrayPalabrasConLetrasJuntas = palabrasConLetrasJuntas;
+    }
+    console.log(arrConPika);
+    return arrConPika;
+}
 
-    return arrayPalabrasConLetrasJuntas;
-};
 
-function arrayATextoEncriptado(arr) {
-    let textoEncriptado = "";
+function arrayATexto(arr) {
+    let texto = "";
 
     for (let i = 0; i < arr.length; i++) {
-        textoEncriptado += arr[i] + " ";
+        texto += arr[i] + " ";
     };
-        return textoEncriptado;
+        return texto;
 };
 
 function limpiarLadoDerecho() {
@@ -223,28 +244,32 @@ function copiarTexto() {
               });
         })
         .catch(err => {
-            console.error('Falló al intentar copiar: ', err);
+            //console.error('Falló al intentar copiar: ', err);
         });
 };
 
 
 
-
+// pikaaloh pikaogima
 function desencriptar() {
-
-    limpiarTextArea();
 
     const texto = valorTextArea();
 
     const arrayDePalabras = pasarDePalabrasAArray(texto);
 
-    const arrayDeLetras = pasarArrayPalabrasALetras(arrayDePalabras);
+    const pikasEliminados = eliminarPikaDePalabras(arrayDePalabras);
+    
+    const arrayDeLetras = pasarArrayPalabrasALetras(pikasEliminados);
 
-    const pikasEliminados = eliminarPikaDePalabras(arrayDeLetras);
+    const palabrasReversadas = invertirOrdenDePalabras(arrayDeLetras);
 
-    const palabrasReversadas = invertirOrdenDePalabras(pikasEliminados);
+   const arrATexto = arrayATextoDesencriptando(palabrasReversadas)
 
-    const sinLetrasAdicionales = removerCaracteresAdicionales(palabrasReversadas);
+    const descriptadosDelChallenge = desenciptarChallenge(arrATexto)
+
+   // const arrATextoDesencriptadoChallenge = arrayATexto(descriptadosDelChallenge)
+
+   const sinLetrasAdicionales = removerCaracteresAdicionales(descriptadosDelChallenge);
 
     const arrayDePalabrasListas = reunirLetras(sinLetrasAdicionales);
 
@@ -266,44 +291,74 @@ function desencriptar() {
 
 // Seleccionar el codigo y convertirlo en array de palabras
 function pasarDePalabrasAArray(texto) {
-   // const textArea = document.querySelector('#text-area').value;
 
     const arrayPalabrasEncriptado = texto.split(' ');
-
+    //console.log(arrayPalabrasEncriptado);
     return arrayPalabrasEncriptado;
 }
 
 // Convertimos el array de palabras,a array de letras con subindice
+// Quitamos todos los "pika" de las palabras
+function eliminarPikaDePalabras(arr) {
+
+    for(let i = 0; i < arr.length; i++){
+        arr[i] = arr[i].substring(4)
+        }
+        //console.log(arr);
+        return arr;
+}
+
+
 function pasarArrayPalabrasALetras(arr) {
-    const arrayLetras = []
+const arrayLetras = []
     
     for(let i = 0; i < arr.length; i++) {
         const letrasPorPalabra = arr[i].split('');
         arrayLetras.push(letrasPorPalabra);
     }
+    //console.log(arrayLetras);
     return arrayLetras;
     
 }
 
-// Quitamos todos los "pika" de las palabras
-function eliminarPikaDePalabras(arr) {
-    for(let i = 0; i < arr.length; i++){
-        arr[i].splice(0, 4)
-        }
-        return arr;
-}
 
 // Invertimos el orden de los elementos del array
 function invertirOrdenDePalabras(arr){
+    console.log(arr);
     for(let i = 0; i < arr.length; i++){
         arr[i].reverse()
     }
+   //console.log(arr);
     return arr;
 }
 
+function arrayATextoDesencriptando(arr) {
+    let texto = "";
+
+    for (let i = 0; i < arr.length; i++) {
+        const arrUnido = arr[i].join('')
+        texto += arrUnido + " ";
+    };
+    console.log(texto);
+        return texto;
+};
+
+// Desencriptamos la version del challenge
+function desenciptarChallenge(text) {
+    console.log(text);
+    text = text.replace(/imes/g, 'i');
+    text = text.replace(/ai/g, 'a');
+    text = text.replace(/enter/g, 'e');
+    text = text.replace(/ober/g, 'o');
+    text = text.replace(/ufat/g, 'u');
+    console.log(text);
+    return text;
+}
+
 // eliminamos las letras agregadas a cada palabra
-function removerCaracteresAdicionales(arr){
+function removerCaracteresAdicionales(texto){
     const arrayReunido = []
+    const arr = texto.split(' ')
 
     for(let i = 0; i < arr.length; i++) {
         const newArr = []
@@ -364,3 +419,8 @@ function mostrarTextoDesencriptado(text) {
     ventanaTexto.style.paddingTop = "1rem";
 
 };
+
+
+
+/////////////////////////////////////////////////////////////////////////
+
