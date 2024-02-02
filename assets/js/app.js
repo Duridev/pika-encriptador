@@ -75,7 +75,6 @@ function validacionTextArea() {
 
 function valorTextArea() {
     const contenido = document.querySelector('#text-area').value;
-   //const contenido = textArea.value;
     const soloMinusculasSinTildes = /^(?=[\s\S]*[a-z])[\n\s]*[a-z\s]*$/;
 
     if (soloMinusculasSinTildes.test(contenido)) {
@@ -257,24 +256,32 @@ function desencriptar() {
 
     const arrayDePalabras = pasarDePalabrasAArray(texto);
 
-    const pikasEliminados = eliminarPikaDePalabras(arrayDePalabras);
-    
-    const arrayDeLetras = pasarArrayPalabrasALetras(pikasEliminados);
+    const pikasEliminados = eliminarPika(arrayDePalabras);
 
+    const arrATexto =  arrayATexto(pikasEliminados);
+    
+    const descriptadosDelChallenge = desenciptarChallenge(arrATexto)
+    
+    const arrayDepalabrasSemiDesencriptado = pasarDePalabrasAArray(descriptadosDelChallenge);
+    console.log('xxxxxxxxxxxxxxxxxx', arrayDepalabrasSemiDesencriptado);
+    
+    const sinLetrasAdicionales = removerCaracteresAdicionales(descriptadosDelChallenge);
+    /*
+  
+    const arrayDeLetras = pasarArrayPalabrasALetras(pikasEliminados);
+    
     const palabrasReversadas = invertirOrdenDePalabras(arrayDeLetras);
 
    const arrATexto = arrayATextoDesencriptando(palabrasReversadas)
 
-    const descriptadosDelChallenge = desenciptarChallenge(arrATexto)
 
    // const arrATextoDesencriptadoChallenge = arrayATexto(descriptadosDelChallenge)
 
-   const sinLetrasAdicionales = removerCaracteresAdicionales(descriptadosDelChallenge);
 
     const arrayDePalabrasListas = reunirLetras(sinLetrasAdicionales);
 
     const textoDesencriptado = convertirArrayAOracion(arrayDePalabrasListas);
-
+*/
     limpiarTextArea();
 
     mostrarTextoDesencriptado(textoDesencriptado);
@@ -293,21 +300,65 @@ function desencriptar() {
 function pasarDePalabrasAArray(texto) {
 
     const arrayPalabrasEncriptado = texto.split(' ');
-    //console.log(arrayPalabrasEncriptado);
+    console.log(arrayPalabrasEncriptado);
     return arrayPalabrasEncriptado;
 }
-
+//pikahola pikachao
 // Convertimos el array de palabras,a array de letras con subindice
 // Quitamos todos los "pika" de las palabras
-function eliminarPikaDePalabras(arr) {
-
+function eliminarPika(arr) {
+    console.log(arr);
     for(let i = 0; i < arr.length; i++){
         arr[i] = arr[i].substring(4)
         }
-        //console.log(arr);
+        console.log(arr);
         return arr;
 }
 
+// Desencriptamos la version del challenge
+function desenciptarChallenge(text) {
+    console.log(text);
+    text = text.replace(/ufat/g, 'u');
+    text = text.replace(/ober/g, 'o');
+    text = text.replace(/enter/g, 'e');
+    text = text.replace(/ai/g, 'a');
+    text = text.replace(/imes/g, 'i');
+    console.log(text);
+    return text;
+}
+/*
+// eliminamos las letras agregadas a cada palabra
+function removerCaracteresAdicionales(texto){
+    const arrayReunido = []
+    const arr = texto.split(' ')
+
+    for(let i = 0; i < arr.length; i++) {
+        const newArr = []
+
+        for (let j = 0; j < arr[i].length; j+=3) {
+            newArr.push(arr[i][j]);
+        };
+        arrayReunido.push(newArr);
+    };
+    return arrayReunido;
+};*/
+function removerCaracteresAdicionales(text){
+    cadena = text.trim();
+    const arrPalabras = cadena.split(' ');
+    const palabrasSinAdicionales = []
+    console.log('recibiendo para arraySinAdicionales', text);
+
+    for(let i = 0; i < arrPalabras.length; i++) {
+        let palabraLimpia = '';
+
+        for (let j = 2; j < arrPalabras[i].length; j+=3) {
+            palabraLimpia += arrPalabras[i][j];
+        };
+        palabrasSinAdicionales.push(palabraLimpia);
+    };
+    console.log('array sin adicionales', palabrasSinAdicionales);
+    return palabrasSinAdicionales;
+}
 
 function pasarArrayPalabrasALetras(arr) {
 const arrayLetras = []
@@ -320,6 +371,7 @@ const arrayLetras = []
     return arrayLetras;
     
 }
+
 
 
 // Invertimos el orden de los elementos del array
@@ -343,33 +395,7 @@ function arrayATextoDesencriptando(arr) {
         return texto;
 };
 
-// Desencriptamos la version del challenge
-function desenciptarChallenge(text) {
-    console.log(text);
-    text = text.replace(/imes/g, 'i');
-    text = text.replace(/ai/g, 'a');
-    text = text.replace(/enter/g, 'e');
-    text = text.replace(/ober/g, 'o');
-    text = text.replace(/ufat/g, 'u');
-    console.log(text);
-    return text;
-}
 
-// eliminamos las letras agregadas a cada palabra
-function removerCaracteresAdicionales(texto){
-    const arrayReunido = []
-    const arr = texto.split(' ')
-
-    for(let i = 0; i < arr.length; i++) {
-        const newArr = []
-
-        for (let j = 0; j < arr[i].length; j+=3) {
-            newArr.push(arr[i][j]);
-        };
-        arrayReunido.push(newArr);
-    };
-    return arrayReunido;
-};
 
 // reunimos las letras del array para formar las palabras
 function reunirLetras(arr){

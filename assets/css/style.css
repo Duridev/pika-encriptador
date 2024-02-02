@@ -237,6 +237,13 @@ svg {
 
 /* Estilo Botones ***************** */
 
+.buttons {
+    display: flex;
+    align-items: center;
+    flex-wrap: no-wrap;
+    
+}
+
 #button-encriptar,
 #button-desencriptar,
 .boton-copiar  {
@@ -382,9 +389,7 @@ footer a {
     }
 
     .buttons {
-        display: flex;
         justify-content: center;
-        align-items: center;
         flex-wrap: wrap;
         
     }
