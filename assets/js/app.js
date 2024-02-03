@@ -3,7 +3,6 @@
 //***************************************************************************
 
 
-
 function encriptar() {
 
     // Paso 1: Obtener el texto del área de texto
@@ -256,9 +255,11 @@ function mostrarTextoEncriptado(text) {
 };
 
 
+
 //***************************************************************************
 //**************** FUNCION PRINCIPAL - DESENCRIPTACION ***********************
 //***************************************************************************
+
 
 function desencriptar() {
     // Paso 1 (global): Obtener el texto del área de texto
@@ -274,7 +275,7 @@ function desencriptar() {
     const arrATexto = arrayATexto(pikasEliminados);
 
     // Paso 5: Desencriptar las letras según las reglas establecidas en el challenge
-    const descriptadosDelChallenge = desenciptarChallenge(arrATexto)
+    const descriptadosDelChallenge = desenciptarChallenge(arrATexto);
 
     // Paso 6: Remover los caracteres adicionales de las palabras desencriptadas
     const sinLetrasAdicionales = removerCaracteresAdicionales(descriptadosDelChallenge);
@@ -286,7 +287,7 @@ function desencriptar() {
     const palabrasReversadas = invertirOrdenDePalabras(arrayDeLetras);
 
     // Paso 9: Convertir el array de letras de nuevo en texto desencriptado
-    const textoDesencriptado = arrayATextoDesencriptando(palabrasReversadas)
+    const textoDesencriptado = arrayATextoDesencriptando(palabrasReversadas);
 
     // Limpiar area de texto luego de encriptar
     limpiarTextArea();
@@ -309,7 +310,7 @@ function pasarDePalabrasAArray(texto) {
     const arrayPalabrasEncriptado = texto.split(' ');
     console.log(arrayPalabrasEncriptado);
     return arrayPalabrasEncriptado;
-}
+};
 
 // Paso 3: Eliminar el prefijo "pika" de cada palabra
 function eliminarPika(arr) {
@@ -319,7 +320,7 @@ function eliminarPika(arr) {
     }
     console.log(arr);
     return arr;
-}
+};
 
 // Paso 5: Desencriptar las letras según las reglas establecidas en el challenge
 function desenciptarChallenge(text) {
@@ -331,13 +332,13 @@ function desenciptarChallenge(text) {
     text = text.replace(/imes/g, 'i');
     console.log(text);
     return text;
-}
+};
 
 // Paso 6: Remover los caracteres adicionales de las palabras desencriptadas
 function removerCaracteresAdicionales(text) {
     cadena = text.trim();
     const arrPalabras = cadena.split(' ');
-    const palabrasSinAdicionales = []
+    const palabrasSinAdicionales = [];
     console.log('recibiendo para arraySinAdicionales', text);
 
     for (let i = 0; i < arrPalabras.length; i++) {
@@ -354,7 +355,7 @@ function removerCaracteresAdicionales(text) {
 
 // Paso 7: Convertir el array de palabras desencriptadas en un array de letras
 function pasarArrayPalabrasALetras(arr) {
-    const arrayLetras = []
+    const arrayLetras = [];
 
     for (let i = 0; i < arr.length; i++) {
         const letrasPorPalabra = arr[i].split('');
@@ -368,7 +369,7 @@ function pasarArrayPalabrasALetras(arr) {
 function invertirOrdenDePalabras(arr) {
     console.log(arr);
     for (let i = 0; i < arr.length; i++) {
-        arr[i].reverse()
+        arr[i].reverse();
     }
     console.log('**array de letras reversado:', arr);
     return arr;
@@ -379,7 +380,7 @@ function arrayATextoDesencriptando(arr) {
     let texto = "";
 
     for (let i = 0; i < arr.length; i++) {
-        const arrUnido = arr[i].join('')
+        const arrUnido = arr[i].join('');
         texto += arrUnido + " ";
     };
     console.log('texto desencriptado:', texto);
@@ -417,5 +418,4 @@ function mostrarTextoDesencriptado(text) {
     ventanaTexto.style.textAlign = 'left';
     ventanaTexto.style.paddingBottom = 0;
     ventanaTexto.style.paddingTop = "1rem";
-
 };
