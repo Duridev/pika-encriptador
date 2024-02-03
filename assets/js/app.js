@@ -266,13 +266,13 @@ function desencriptar() {
     console.log('xxxxxxxxxxxxxxxxxx', arrayDepalabrasSemiDesencriptado);
     
     const sinLetrasAdicionales = removerCaracteresAdicionales(descriptadosDelChallenge);
-    /*
-  
-    const arrayDeLetras = pasarArrayPalabrasALetras(pikasEliminados);
+    
+    const arrayDeLetras = pasarArrayPalabrasALetras(sinLetrasAdicionales);
     
     const palabrasReversadas = invertirOrdenDePalabras(arrayDeLetras);
-
-   const arrATexto = arrayATextoDesencriptando(palabrasReversadas)
+    
+    const textoDesencriptado = arrayATextoDesencriptando(palabrasReversadas)
+    /*
 
 
    // const arrATextoDesencriptadoChallenge = arrayATexto(descriptadosDelChallenge)
@@ -326,22 +326,8 @@ function desenciptarChallenge(text) {
     console.log(text);
     return text;
 }
-/*
-// eliminamos las letras agregadas a cada palabra
-function removerCaracteresAdicionales(texto){
-    const arrayReunido = []
-    const arr = texto.split(' ')
 
-    for(let i = 0; i < arr.length; i++) {
-        const newArr = []
 
-        for (let j = 0; j < arr[i].length; j+=3) {
-            newArr.push(arr[i][j]);
-        };
-        arrayReunido.push(newArr);
-    };
-    return arrayReunido;
-};*/
 function removerCaracteresAdicionales(text){
     cadena = text.trim();
     const arrPalabras = cadena.split(' ');
@@ -367,7 +353,7 @@ const arrayLetras = []
         const letrasPorPalabra = arr[i].split('');
         arrayLetras.push(letrasPorPalabra);
     }
-    //console.log(arrayLetras);
+    console.log('***array de array de letras:', arrayLetras);
     return arrayLetras;
     
 }
@@ -380,7 +366,7 @@ function invertirOrdenDePalabras(arr){
     for(let i = 0; i < arr.length; i++){
         arr[i].reverse()
     }
-   //console.log(arr);
+   console.log('**array de letras reversado:', arr);
     return arr;
 }
 
@@ -391,12 +377,12 @@ function arrayATextoDesencriptando(arr) {
         const arrUnido = arr[i].join('')
         texto += arrUnido + " ";
     };
-    console.log(texto);
+    console.log('texto desencriptado:', texto);
         return texto;
 };
 
 
-
+/*
 // reunimos las letras del array para formar las palabras
 function reunirLetras(arr){
     const newArray = []
@@ -411,6 +397,7 @@ function convertirArrayAOracion(arr) {
     
     return oracion;
 }
+*/
 
 
 function mostrarTextoDesencriptado(text) {
