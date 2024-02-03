@@ -4,41 +4,41 @@
 
 
 
-    function encriptar() {
+function encriptar() {
 
-        // Paso 1: Obtener el texto del área de texto
-        const texto = valorTextArea();
+    // Paso 1: Obtener el texto del área de texto
+    const texto = valorTextArea();
 
-        // Paso 2: Separar las palabras del texto en un array
-        const palabrasSeparadas = separarPalabrasArray(texto);
+    // Paso 2: Separar las palabras del texto en un array
+    const palabrasSeparadas = separarPalabrasArray(texto);
 
-        // Paso 3: Añadir letras aleatorias a cada palabra
-        const palabrasConLetrasAdicionadas = adicionarLetrasArray(palabrasSeparadas);
-        
-        // Paso 4: Invertir las letras de cada palabra
-        const palabrasInvertidas = invertirArray(palabrasConLetrasAdicionadas);
-        
-        // Paso 5: Juntar las letras de cada palabra
-        const palabrasEncriptadas = juntarLetrasPalabrasArray(palabrasInvertidas);
+    // Paso 3: Añadir letras aleatorias a cada palabra
+    const palabrasConLetrasAdicionadas = adicionarLetrasArray(palabrasSeparadas);
 
-        // Paso 6: Cambiar las vocales por lo solicitado en el challenge
-        const textoSegunChallenge = encriptacionChallenge(palabrasEncriptadas)
+    // Paso 4: Invertir las letras de cada palabra
+    const palabrasInvertidas = invertirArray(palabrasConLetrasAdicionadas);
 
-        // Paso 7: Añadir el prefijo "pika" a cada palabra
-        const palabrasConPika = incluirPika(textoSegunChallenge)
+    // Paso 5: Juntar las letras de cada palabra
+    const palabrasEncriptadas = juntarLetrasPalabrasArray(palabrasInvertidas);
 
-        // Paso 8: Convertir el array de palabras encriptadas a string encriptado
-        const TextoEncriptadoListo = arrayATexto(palabrasConPika);
+    // Paso 6: Cambiar las vocales por lo solicitado en el challenge
+    const textoSegunChallenge = encriptacionChallenge(palabrasEncriptadas)
 
-        // Paso 9: limpar el HTML y mostrar texto encriptado
-        mostrarTextoEncriptado(TextoEncriptadoListo);
+    // Paso 7: Añadir el prefijo "pika" a cada palabra
+    const palabrasConPika = incluirPika(textoSegunChallenge)
 
-        // Limpiar area de texto luego de encriptar
-        limpiarTextArea();
+    // Paso 8: Convertir el array de palabras encriptadas a string encriptado
+    const TextoEncriptadoListo = arrayATexto(palabrasConPika);
 
-        // Creación boton copiar texto encriptado
-        botonCopiarTexto();
-    };
+    // Paso 9: limpar el HTML y mostrar texto encriptado
+    mostrarTextoEncriptado(TextoEncriptadoListo);
+
+    // Limpiar area de texto luego de encriptar
+    limpiarTextArea();
+
+    // Creación boton copiar texto encriptado
+    botonCopiarTexto();
+};
 
 
 
@@ -72,7 +72,7 @@ function validacionTextArea() {
     }
 };
 
-    // Limpiar area de texto luego de encriptar
+// Limpiar area de texto luego de encriptar
 function limpiarTextArea() {
     const textArea = document.querySelector('#text-area');
     textArea.value = '';
@@ -89,7 +89,7 @@ function botonCopiarTexto() {
         const botonCopiar = document.createElement('button');
         divBottom.appendChild(botonCopiar);
         botonCopiar.classList.add('boton-copiar');
-        botonCopiar.innerHTML='Pika-Copiar';
+        botonCopiar.innerHTML = 'Pika-Copiar';
         botonCopiar.onclick = copiarTexto;
     };
 };
@@ -98,7 +98,7 @@ function botonCopiarTexto() {
 function limpiarLadoDerecho() {
     const ladoDerecho = document.querySelector('.right-area');
 
-    ladoDerecho.innerHTML= "";
+    ladoDerecho.innerHTML = "";
 };
 
 // Función para copiar el texto al portapapeles
@@ -112,7 +112,7 @@ function copiarTexto() {
                 html: '<img src="../assets/img/pikajockey.png" width="150px" style="margin: auto"><p style="font-size: 1.8rem">Texto copiado exitosamente</p>',
                 showConfirmButton: false,
                 timer: 1500
-              });
+            });
         })
         .catch(err => {
             //console.error('Falló al intentar copiar: ', err);
@@ -131,32 +131,32 @@ function valorTextArea() {
     const soloMinusculasSinTildes = /^(?=[\s\S]*[a-z])[\n\s]*[a-z\s]*$/;
 
     if (soloMinusculasSinTildes.test(contenido)) {
- 
+
         return contenido;
     } else {
         Swal.fire({
             title: "Error de capa 8",
             html: '<img src="../assets/img/pikachu-pokemon.gif" width="150px" style="margin: auto"><p style="font-size: 1.8rem">Escribe solo letras minúsculas sin tildes ni caracteres especiales</p>'
-          });
+        });
         return null;
     }
 };
 
-    // Paso 2: Separar las palabras del texto en un array
+// Paso 2: Separar las palabras del texto en un array
 function separarPalabrasArray(texto) {
     const arrayPalabras = texto.split(/\s+/);
     console.log('**separar palabras en array:', arrayPalabras);
     return arrayPalabras;
 };
 
-    // Paso 3: Añadir letras aleatorias a cada palabra
-function adicionarLetrasArray(arr) {             
+// Paso 3: Añadir letras aleatorias a cada palabra
+function adicionarLetrasArray(arr) {
     const arrayConLetrasAdicionadas = [];
 
-    for(let i = 0; i < arr.length; i++){
+    for (let i = 0; i < arr.length; i++) {
         const palabrasConLetrasAdicionadas = [];
 
-        for(let j = 0; j < arr[i].length; j++) {
+        for (let j = 0; j < arr[i].length; j++) {
             consRandom = consonantes[Math.floor(Math.random() * consonantes.length)];
             vocRandom = vocales[Math.floor(Math.random() * vocales.length)];
             palabrasConLetrasAdicionadas.push(consRandom + vocRandom + arr[i][j]);
@@ -167,17 +167,17 @@ function adicionarLetrasArray(arr) {
     return arrayConLetrasAdicionadas;
 };
 
-    // Paso 4: Invertir las letras de cada palabra
+// Paso 4: Invertir las letras de cada palabra
 function invertirArray(arr) {
     const newArr = [];
-    for(let i = 0; i < arr.length; i++){
+    for (let i = 0; i < arr.length; i++) {
         newArr.push(arr[i].slice().reverse())
     }
     console.log('**array reversado:', newArr);
     return newArr
 }
 
-    // Paso 5: Juntar las letras de cada palabra
+// Paso 5: Juntar las letras de cada palabra
 function juntarLetrasPalabrasArray(arr) {
     const arrayPalabrasConLetrasJuntas = [];
 
@@ -189,7 +189,7 @@ function juntarLetrasPalabrasArray(arr) {
     return palabrasConLetrasJuntas;
 }
 
-    // Paso 6: Cambiar las vocales por lo solicitado en el challenge
+// Paso 6: Cambiar las vocales por lo solicitado en el challenge
 function encriptacionChallenge(text) {
     console.log('**antes de encriptar:', text);
     text = text.replace(/e/g, 'enter');
@@ -201,30 +201,30 @@ function encriptacionChallenge(text) {
     return text;
 }
 
-    // Paso 7: Añadir el prefijo "pika" a cada palabra
+// Paso 7: Añadir el prefijo "pika" a cada palabra
 function incluirPika(text) {
     const arr = text.split(' ')
     const arrConPika = []
-    for(let i = 0; i <  arr.length; i++){
-        if(arr[i] !==  '') {
-        arrConPika.push("pika" + arr[i]);
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] !== '') {
+            arrConPika.push("pika" + arr[i]);
         }
     }
     console.log(arrConPika);
     return arrConPika;
 }
 
-    // Paso 8: Convertir el array de palabras encriptadas a string encriptado
+// Paso 8: Convertir el array de palabras encriptadas a string encriptado
 function arrayATexto(arr) {
     let texto = "";
 
     for (let i = 0; i < arr.length; i++) {
         texto += arr[i] + " ";
     };
-        return texto;
+    return texto;
 };
 
-    // Paso 9: limpar el HTML y mostrar texto encriptado
+// Paso 9: limpar el HTML y mostrar texto encriptado
 function mostrarTextoEncriptado(text) {
     const ventanaTexto = document.querySelector('.right-area');
 
@@ -233,7 +233,7 @@ function mostrarTextoEncriptado(text) {
     const divTop = document.createElement('div');
     ventanaTexto.appendChild(divTop);
     divTop.classList.add('div-top');
-    
+
     const divBottom = document.createElement('div');
     ventanaTexto.appendChild(divBottom);
     divBottom.classList.add('div-bottom');
@@ -244,7 +244,7 @@ function mostrarTextoEncriptado(text) {
 
 
     const imgPika = document.createElement('img');
-    imgPika.src="./assets/img/pika-saludo-cortado.png";
+    imgPika.src = "./assets/img/pika-saludo-cortado.png";
     imgPika.classList.add('pikachu-saludando');
     ventanaTexto.appendChild(imgPika);
 
@@ -273,28 +273,31 @@ function desencriptar() {
     // Paso 3: Eliminar el prefijo "pika" de cada palabra
     const pikasEliminados = eliminarPika(arrayDePalabras);
 
-    // Paso 4: Convierte el array en una cadena de texto
-    const arrATexto =  arrayATexto(pikasEliminados);
-    
+    // Paso 4 (global): Convierte el array en una cadena de texto
+    const arrATexto = arrayATexto(pikasEliminados);
+
     // Paso 5: Desencriptar las letras según las reglas establecidas en el challenge
     const descriptadosDelChallenge = desenciptarChallenge(arrATexto)
 
     // Paso 6: Remover los caracteres adicionales de las palabras desencriptadas
     const sinLetrasAdicionales = removerCaracteresAdicionales(descriptadosDelChallenge);
-    
+
     // Paso 7: Convertir el array de palabras desencriptadas en un array de letras
     const arrayDeLetras = pasarArrayPalabrasALetras(sinLetrasAdicionales);
-    
+
     // Paso 8: Invertir el orden de las letras en cada palabra
     const palabrasReversadas = invertirOrdenDePalabras(arrayDeLetras);
-    
+
     // Paso 9: Convertir el array de letras de nuevo en texto desencriptado
     const textoDesencriptado = arrayATextoDesencriptando(palabrasReversadas)
 
+    // Limpiar area de texto luego de encriptar
     limpiarTextArea();
 
+    // Paso 10: limpar el HTML y mostrar texto encriptado
     mostrarTextoDesencriptado(textoDesencriptado);
 
+    // Creación boton copiar texto encriptado
     botonCopiarTexto();
 
 }
@@ -303,7 +306,7 @@ function desencriptar() {
 //******** FUNCIONES PARA DESENCRIPTAR EL TEXTO ****************************************
 //        **************************************
 
-    // Paso 2: Convertir el texto encriptado en un array de palabras
+// Paso 2: Convertir el texto encriptado en un array de palabras
 function pasarDePalabrasAArray(texto) {
 
     const arrayPalabrasEncriptado = texto.split(' ');
@@ -311,18 +314,17 @@ function pasarDePalabrasAArray(texto) {
     return arrayPalabrasEncriptado;
 }
 
-// Convertimos el array de palabras,a array de letras con subindice
-// Quitamos todos los "pika" de las palabras
+// Paso 3: Eliminar el prefijo "pika" de cada palabra
 function eliminarPika(arr) {
     console.log(arr);
-    for(let i = 0; i < arr.length; i++){
+    for (let i = 0; i < arr.length; i++) {
         arr[i] = arr[i].substring(4)
-        }
-        console.log(arr);
-        return arr;
+    }
+    console.log(arr);
+    return arr;
 }
 
-    // Desencriptamos la version del challenge
+// Paso 5: Desencriptar las letras según las reglas establecidas en el challenge
 function desenciptarChallenge(text) {
     console.log(text);
     text = text.replace(/ufat/g, 'u');
@@ -334,17 +336,17 @@ function desenciptarChallenge(text) {
     return text;
 }
 
-    // Paso 6: Remover los caracteres adicionales de las palabras desencriptadas
-function removerCaracteresAdicionales(text){
+// Paso 6: Remover los caracteres adicionales de las palabras desencriptadas
+function removerCaracteresAdicionales(text) {
     cadena = text.trim();
     const arrPalabras = cadena.split(' ');
     const palabrasSinAdicionales = []
     console.log('recibiendo para arraySinAdicionales', text);
 
-    for(let i = 0; i < arrPalabras.length; i++) {
+    for (let i = 0; i < arrPalabras.length; i++) {
         let palabraLimpia = '';
 
-        for (let j = 2; j < arrPalabras[i].length; j+=3) {
+        for (let j = 2; j < arrPalabras[i].length; j += 3) {
             palabraLimpia += arrPalabras[i][j];
         };
         palabrasSinAdicionales.push(palabraLimpia);
@@ -353,30 +355,29 @@ function removerCaracteresAdicionales(text){
     return palabrasSinAdicionales;
 }
 
+// Paso 7: Convertir el array de palabras desencriptadas en un array de letras
 function pasarArrayPalabrasALetras(arr) {
-const arrayLetras = []
-    
-    for(let i = 0; i < arr.length; i++) {
+    const arrayLetras = []
+
+    for (let i = 0; i < arr.length; i++) {
         const letrasPorPalabra = arr[i].split('');
         arrayLetras.push(letrasPorPalabra);
     }
     console.log('***array de array de letras:', arrayLetras);
     return arrayLetras;
-    
-}
+};
 
-
-
-// Invertimos el orden de los elementos del array
-function invertirOrdenDePalabras(arr){
+// Paso 8: Invertir el orden de las letras en cada palabra
+function invertirOrdenDePalabras(arr) {
     console.log(arr);
-    for(let i = 0; i < arr.length; i++){
+    for (let i = 0; i < arr.length; i++) {
         arr[i].reverse()
     }
-   console.log('**array de letras reversado:', arr);
+    console.log('**array de letras reversado:', arr);
     return arr;
 }
 
+// Paso 9: Convertir el array de letras de nuevo en texto desencriptado
 function arrayATextoDesencriptando(arr) {
     let texto = "";
 
@@ -385,21 +386,19 @@ function arrayATextoDesencriptando(arr) {
         texto += arrUnido + " ";
     };
     console.log('texto desencriptado:', texto);
-        return texto;
+    return texto;
 };
 
-
-
-
+// Paso 10: limpar el HTML y mostrar texto encriptado
 function mostrarTextoDesencriptado(text) {
     const ventanaTexto = document.querySelector('.right-area');
 
     limpiarLadoDerecho();
-    
+
     const divTop = document.createElement('div');
     ventanaTexto.appendChild(divTop);
     divTop.classList.add('div-top');
-    
+
     const divBottom = document.createElement('div');
     ventanaTexto.appendChild(divBottom);
     divBottom.classList.add('div-bottom');
@@ -410,7 +409,7 @@ function mostrarTextoDesencriptado(text) {
 
 
     const imgPika = document.createElement('img');
-    imgPika.src="./assets/img/pika-saludo-cortado.png";
+    imgPika.src = "./assets/img/pika-saludo-cortado.png";
     imgPika.classList.add('pikachu-saludando');
     ventanaTexto.appendChild(imgPika);
 
@@ -423,8 +422,3 @@ function mostrarTextoDesencriptado(text) {
     ventanaTexto.style.paddingTop = "1rem";
 
 };
-
-
-
-/////////////////////////////////////////////////////////////////////////
-
