@@ -1,5 +1,5 @@
 //***************************************************************************
-//**************** FUNCION PRINCIPAL - DESENCRIPTACION ***********************
+//**************** FUNCION PRINCIPAL - ENCRIPTACION ***********************
 //***************************************************************************
 
 
@@ -124,6 +124,7 @@ function copiarTexto() {
 
 //******** FUNCIONES PARA ENCRIPTAR EL TEXTO ****************************************
 //        ***********************************
+
 
 //Paso 1:  Obtener el texto del área de texto
 function valorTextArea() {
@@ -264,26 +265,35 @@ function mostrarTextoEncriptado(text) {
 //***************************************************************************
 
 function desencriptar() {
-
+    // Paso 1 (global): Obtener el texto del área de texto
     const texto = valorTextArea();
 
+    // Paso 2: Convertir el texto encriptado en un array de palabras
     const arrayDePalabras = pasarDePalabrasAArray(texto);
 
+    // Paso 3: Eliminar el prefijo "pika" de cada palabra
     const pikasEliminados = eliminarPika(arrayDePalabras);
 
+    // Paso 4: Desencriptar las letras según las reglas establecidas en el challenge
     const arrATexto =  arrayATexto(pikasEliminados);
     
+    // Paso 5: Convertir el texto desencriptado de nuevo en un array de palabras
+
     const descriptadosDelChallenge = desenciptarChallenge(arrATexto)
-    
+
     const arrayDepalabrasSemiDesencriptado = pasarDePalabrasAArray(descriptadosDelChallenge);
     console.log('xxxxxxxxxxxxxxxxxx', arrayDepalabrasSemiDesencriptado);
     
+    // Paso 6: Remover los caracteres adicionales de las palabras desencriptadas
     const sinLetrasAdicionales = removerCaracteresAdicionales(descriptadosDelChallenge);
     
+    // Paso 7: Convertir el array de palabras desencriptadas en un array de letras
     const arrayDeLetras = pasarArrayPalabrasALetras(sinLetrasAdicionales);
     
+    // Paso 8: Invertir el orden de las letras en cada palabra
     const palabrasReversadas = invertirOrdenDePalabras(arrayDeLetras);
     
+    // Paso 9: Convertir el array de letras de nuevo en texto desencriptado
     const textoDesencriptado = arrayATextoDesencriptando(palabrasReversadas)
 
     limpiarTextArea();
@@ -298,7 +308,7 @@ function desencriptar() {
 //******** FUNCIONES PARA DESENCRIPTAR EL TEXTO ****************************************
 //        **************************************
 
-// Seleccionar el codigo y convertirlo en array de palabras
+    // Paso 2: Convertir el texto encriptado en un array de palabras
 function pasarDePalabrasAArray(texto) {
 
     const arrayPalabrasEncriptado = texto.split(' ');
@@ -317,7 +327,7 @@ function eliminarPika(arr) {
         return arr;
 }
 
-// Desencriptamos la version del challenge
+    // Desencriptamos la version del challenge
 function desenciptarChallenge(text) {
     console.log(text);
     text = text.replace(/ufat/g, 'u');
@@ -329,7 +339,7 @@ function desenciptarChallenge(text) {
     return text;
 }
 
-
+    // Paso 6: Remover los caracteres adicionales de las palabras desencriptadas
 function removerCaracteresAdicionales(text){
     cadena = text.trim();
     const arrPalabras = cadena.split(' ');
