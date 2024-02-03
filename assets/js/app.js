@@ -216,11 +216,8 @@ function incluirPika(text) {
 
 // Paso 8: Convertir el array de palabras encriptadas a string encriptado
 function arrayATexto(arr) {
-    let texto = "";
+    let texto = arr.join(' ');
 
-    for (let i = 0; i < arr.length; i++) {
-        texto += arr[i] + " ";
-    };
     return texto;
 };
 
