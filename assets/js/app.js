@@ -3,7 +3,6 @@
 //***************************************************************************
 
 
-document.addEventListener('DOMContentLoaded', () => {
 
     function encriptar() {
 
@@ -40,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Creación boton copiar texto encriptado
         botonCopiarTexto();
     };
-});
+
 
 
 //********************** FUNCIONES GLOBALES ****************************************
@@ -274,16 +273,12 @@ function desencriptar() {
     // Paso 3: Eliminar el prefijo "pika" de cada palabra
     const pikasEliminados = eliminarPika(arrayDePalabras);
 
-    // Paso 4: Desencriptar las letras según las reglas establecidas en el challenge
+    // Paso 4: Convierte el array en una cadena de texto
     const arrATexto =  arrayATexto(pikasEliminados);
     
-    // Paso 5: Convertir el texto desencriptado de nuevo en un array de palabras
-
+    // Paso 5: Desencriptar las letras según las reglas establecidas en el challenge
     const descriptadosDelChallenge = desenciptarChallenge(arrATexto)
 
-    const arrayDepalabrasSemiDesencriptado = pasarDePalabrasAArray(descriptadosDelChallenge);
-    console.log('xxxxxxxxxxxxxxxxxx', arrayDepalabrasSemiDesencriptado);
-    
     // Paso 6: Remover los caracteres adicionales de las palabras desencriptadas
     const sinLetrasAdicionales = removerCaracteresAdicionales(descriptadosDelChallenge);
     
