@@ -114,7 +114,7 @@ function copiarTexto() {
             });
         })
         .catch(err => {
-            //console.error('Falló al intentar copiar: ', err);
+            console.error('Falló al intentar copiar: ', err);
         });
 };
 
@@ -144,7 +144,6 @@ function valorTextArea() {
 // Paso 2: Separar las palabras del texto en un array
 function separarPalabrasArray(texto) {
     const arrayPalabras = texto.split(/\s+/);
-    console.log('**separar palabras en array:', arrayPalabras);
     return arrayPalabras;
 };
 
@@ -162,7 +161,6 @@ function adicionarLetrasArray(arr) {
         }
         arrayConLetrasAdicionadas.push(palabrasConLetrasAdicionadas);
     };
-    console.log('**arr con letyras adicionadas:', arrayConLetrasAdicionadas);
     return arrayConLetrasAdicionadas;
 };
 
@@ -172,7 +170,6 @@ function invertirArray(arr) {
     for (let i = 0; i < arr.length; i++) {
         newArr.push(arr[i].slice().reverse())
     }
-    console.log('**array reversado:', newArr);
     return newArr
 }
 
@@ -184,19 +181,16 @@ function juntarLetrasPalabrasArray(arr) {
         arrayPalabrasConLetrasJuntas.push(arr[i].join(''));
     }
     const palabrasConLetrasJuntas = arrayPalabrasConLetrasJuntas.join(' ');
-    console.log(palabrasConLetrasJuntas);
     return palabrasConLetrasJuntas;
 }
 
 // Paso 6: Cambiar las vocales por lo solicitado en el challenge
 function encriptacionChallenge(text) {
-    console.log('**antes de encriptar:', text);
     text = text.replace(/e/g, 'enter');
     text = text.replace(/i/g, 'imes');
     text = text.replace(/a/g, 'ai');
     text = text.replace(/o/g, 'ober');
     text = text.replace(/u/g, 'ufat');
-    console.log('**despues de encriptar:', text);
     return text;
 }
 
@@ -209,7 +203,6 @@ function incluirPika(text) {
             arrConPika.push("pika" + arr[i]);
         }
     }
-    console.log(arrConPika);
     return arrConPika;
 }
 
@@ -308,29 +301,24 @@ function desencriptar() {
 function pasarDePalabrasAArray(texto) {
 
     const arrayPalabrasEncriptado = texto.split(' ');
-    console.log(arrayPalabrasEncriptado);
     return arrayPalabrasEncriptado;
 };
 
 // Paso 3: Eliminar el prefijo "pika" de cada palabra
 function eliminarPika(arr) {
-    console.log(arr);
     for (let i = 0; i < arr.length; i++) {
         arr[i] = arr[i].substring(4)
     }
-    console.log(arr);
     return arr;
 };
 
 // Paso 5: Desencriptar las letras según las reglas establecidas en el challenge
 function desenciptarChallenge(text) {
-    console.log(text);
     text = text.replace(/ufat/g, 'u');
     text = text.replace(/ober/g, 'o');
     text = text.replace(/enter/g, 'e');
     text = text.replace(/ai/g, 'a');
     text = text.replace(/imes/g, 'i');
-    console.log(text);
     return text;
 };
 
@@ -339,7 +327,6 @@ function removerCaracteresAdicionales(text) {
     cadena = text.trim();
     const arrPalabras = cadena.split(' ');
     const palabrasSinAdicionales = [];
-    console.log('recibiendo para arraySinAdicionales', text);
 
     for (let i = 0; i < arrPalabras.length; i++) {
         let palabraLimpia = '';
@@ -349,7 +336,6 @@ function removerCaracteresAdicionales(text) {
         };
         palabrasSinAdicionales.push(palabraLimpia);
     };
-    console.log('array sin adicionales', palabrasSinAdicionales);
     return palabrasSinAdicionales;
 }
 
@@ -361,17 +347,14 @@ function pasarArrayPalabrasALetras(arr) {
         const letrasPorPalabra = arr[i].split('');
         arrayLetras.push(letrasPorPalabra);
     }
-    console.log('***array de array de letras:', arrayLetras);
     return arrayLetras;
 };
 
 // Paso 8: Invertir el orden de las letras en cada palabra
 function invertirOrdenDePalabras(arr) {
-    console.log(arr);
     for (let i = 0; i < arr.length; i++) {
         arr[i].reverse();
     }
-    console.log('**array de letras reversado:', arr);
     return arr;
 }
 
@@ -383,7 +366,6 @@ function arrayATextoDesencriptando(arr) {
         const arrUnido = arr[i].join('');
         texto += arrUnido + " ";
     };
-    console.log('texto desencriptado:', texto);
     return texto;
 };
 
